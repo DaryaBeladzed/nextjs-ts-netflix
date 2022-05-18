@@ -4,11 +4,11 @@
 
 @layer base {
   body {
-    @apply bg-[#141414] text-white !scrollbar-thin !scrollbar-thumb-red-600 !scrollbar-track-transparent;
+    @apply bg-[#141414] text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
   }
 
   header {
-    @apply fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-8 lg:py-5  xl:px-10 xl:py-6 ;
+    @apply fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-8 lg:py-5  xl:px-10 xl:py-6;
   }
 }
 
@@ -18,10 +18,22 @@
   }
 
   .bunnerBtn {
-    @apply flex gap-x-2 items-center rounded font-semibold px-5 py-1.5 text-sm transition hover:opacity-75 2xl:py-2.5 2xl:px-8 2xl:text-xl;
+    @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 2xl:py-2.5 2xl:px-8 2xl:text-xl;
   }
 
   .categoryArrow {
-    @apply absolute top-0 bottom-0 h-9 w-9 z-40 cursor-pointer opacity-0 group-hover:opacity-100 m-auto
+    @apply absolute top-0 bottom-0 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 group-hover:opacity-100;
+  }
+
+  .custInput {
+    @apply w-full rounded bg-[#333333] py-5 px-3.5 placeholder-[gray] outline-none focus:bg-[#454545];
+  }
+
+  .errorP {
+    @apply p-1 text-[13px] font-light  text-orange-500;
+  }
+
+  .modalBtn {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border-2 border-[gray] bg-[#2a2a2a]/60 text-white hover:border-white hover:bg-white/10;
   }
 }

@@ -1,7 +1,5 @@
 import * as paths from '../utils/requests'
 
-export const BASE_URL = 'https://image.tmdb.org/t/p/original/'
-
 export const categories = {
   trending: {
     title: 'Trending Now',

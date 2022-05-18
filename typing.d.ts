@@ -27,7 +27,7 @@ export interface Category {
   movies: Movie[]
 }
 
-export interface Element {
+export interface VideoType {
   type:
     | 'Bloopers'
     | 'Featurette'

@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { BASE_URL } from '../constants/movie'
 import { Movie } from '../typing'
 import { FaPlay } from 'react-icons/fa'
 import { InformationCircleIcon } from '@heroicons/react/solid'
+import { useSetRecoilState } from 'recoil'
+import { modalModeState, modalMovieState } from '../atoms/modalAtoms'
+import { BASE_URL_BANNER } from '../utils/requests'
 
 interface Props {
   netflixOriginals: Movie[]
@@ -11,6 +13,8 @@ interface Props {
 
 const Banner = ({ netflixOriginals }: Props) => {
   const [movie, setMovie] = useState<Movie | null>(null)
+  const setModalMode = useSetRecoilState(modalModeState)
+  const setModalMovie = useSetRecoilState(modalMovieState)
 
   useEffect(() => {
     setMovie(
@@ -18,13 +22,11 @@ const Banner = ({ netflixOriginals }: Props) => {
     )
   }, [netflixOriginals])
 
-  console.log(movie)
-
   return (
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[70vh] lg:justify-end lg:pb-12 2xl:h-[65vh]">
       <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
         <Image
-          src={`${BASE_URL}${movie?.backdrop_path || movie?.poster_path}`}
+          src={`${BASE_URL_BANNER}${movie?.backdrop_path || movie?.poster_path}`}
           layout="fill"
           objectFit="cover"
         />
@@ -40,7 +42,13 @@ const Banner = ({ netflixOriginals }: Props) => {
           <FaPlay className="h-4 w-4 md:h-5 md:w-5 2xl:h-7 2xl:w-7" />
           Play
         </button>
-        <button className="bunnerBtn bg-[gray]/70">
+        <button
+          className="bunnerBtn bg-[gray]/70"
+          onClick={() => {
+            setModalMode(true)
+            setModalMovie(movie)
+          }}
+        >
           More info
           <InformationCircleIcon className="h-5 w-5 md:h-6 md:w-6 2xl:h-8 2xl:w-8" />
         </button>
