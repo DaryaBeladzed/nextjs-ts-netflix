@@ -13,11 +13,22 @@ import { modalGenresState, modalMovieState } from '../../atoms/modalAtoms'
 import { myListState } from '../../atoms/myListAtoms'
 import useAuth from '../../hooks/useAuth'
 import { VideoType } from '../../typing'
+import toast from 'react-hot-toast'
 import {
   addToMyList,
   getModalMovie,
   removeFromMyList,
 } from '../../utils/api/myListApi'
+
+const toastStyle = {
+  background: 'white',
+  color: 'black',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  padding: '15px',
+  borderRadius: '9999px',
+  maxWidth: '1000px',
+}
 
 const Player = () => {
   const [muted, setMuted] = useState(false)
@@ -54,9 +65,31 @@ const Player = () => {
       if (!isAddedToMyList) {
         await addToMyList(user!, currentMovie!)
         setIsAddedToMyList(true)
+        toast(
+          `${
+            currentMovie?.title ||
+            currentMovie?.name ||
+            currentMovie?.original_name
+          } has been added to My List`,
+          {
+            style: toastStyle,
+            duration: 8000,
+          }
+        )
       } else {
         await removeFromMyList(user!, currentMovie!.id)
         setIsAddedToMyList(false)
+        toast(
+          `${
+            currentMovie?.title ||
+            currentMovie?.name ||
+            currentMovie?.original_name
+          } has been removed from My List`,
+          {
+            style: toastStyle,
+            duration: 8000,
+          }
+        )
       }
     } catch (e) {
       console.log(e)
