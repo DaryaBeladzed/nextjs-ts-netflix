@@ -20,7 +20,7 @@ const Modal = () => {
     >
       <>
         <button
-          className="modalBtn absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
+          className="modalBtn sticky float-right right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
           onClick={closeHandler}
         >
           <XIcon className="h-6 w-6" />

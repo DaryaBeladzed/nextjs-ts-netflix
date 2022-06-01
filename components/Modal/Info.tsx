@@ -18,7 +18,7 @@ const Info = () => {
           HD
         </div>
       </div>
-      <div className="flex flex-col gap-y-4 font-light md:flex-row">
+      <div className="flex flex-col gap-y-4 gap-x-3 font-light md:flex-row">
         <p className="w-5/6">{currentMovie?.overview}</p>
         <div className="flex flex-col space-y-3 text-sm">
           <div>

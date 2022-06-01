@@ -1,9 +1,10 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
+import { DocumentData } from 'firebase/firestore'
 import { useRef, useState } from 'react'
-import { Category } from '../../typing'
+import { Category, Movie } from '../../typing'
 import Thumbnail from './Thumbnail'
 
-const Row = ({ title, movies }: Category) => {
+const Row = ({ title, movies }: Category<Movie[] | DocumentData[]>) => {
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
 

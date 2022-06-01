@@ -14,7 +14,7 @@
 
 @layer components {
   .headerLink {
-    @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-[.4s] hover:text-[#b3b3b3];
+    @apply cursor-pointer !text-sm !font-light !text-[#e5e5e5] !transition !duration-[.4s] hover:text-[#b3b3b3];
   }
 
   .bunnerBtn {
@@ -35,5 +35,25 @@
 
   .modalBtn {
     @apply flex h-9 w-9 items-center justify-center rounded-full border-2 border-[gray] bg-[#2a2a2a]/60 text-white hover:border-white hover:bg-white/10;
+  }
+
+  .planBox {
+    @apply relative mx-1.5 flex h-20 w-[calc(100%/3)] cursor-pointer items-center justify-center rounded-sm bg-[#e50914] font-semibold shadow after:absolute after:-bottom-1.5 after:h-3 after:w-3 after:rotate-45 after:bg-[#e50914] after:content-[""] md:h-32 lg:mx-8;
+  }
+
+  .tableCell {
+    @apply w-[calc(100%/3)] p-2.5 text-center md:w-[calc(60%/3)] md:p-3.5;
+  }
+
+  .accountBlock {
+    @apply flex flex-col items-start justify-between border-[1px] border-white py-4 px-4 md:flex-row md:items-center md:border-x-0 md:border-t-[1px] md:border-b-0 md:px-0;
+  }
+
+  .blueLink {
+    @apply cursor-pointer text-blue-500 hover:underline;
+  }
+
+  .accountInfoBlock {
+    @apply flex flex-col justify-between text-sm md:flex-row;
   }
 }

@@ -13,7 +13,7 @@ import {
   signOut,
   User,
 } from 'firebase/auth'
-import { auth } from '../firebase'
+import { auth } from '../utils/firebase'
 import { useRouter } from 'next/router'
 import nookies from 'nookies'
 
@@ -53,6 +53,7 @@ export const AuthProvider: FC = ({ children }) => {
     //   }
     // })
     return auth.onIdTokenChanged(async (user) => {
+      setLoading(true)
       if (!user) {
         setUser(null)
         nookies.set(undefined, 'token', '', { path: '/' })
@@ -61,6 +62,7 @@ export const AuthProvider: FC = ({ children }) => {
         const token = await user.getIdToken()
         setUser(user)
         nookies.set(undefined, 'token', token, { path: '/' })
+        setLoading(false)
       }
     })
   }, [])

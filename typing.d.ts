@@ -1,3 +1,5 @@
+import { DocumentData } from 'firebase/firestore'
+
 export interface Genre {
   id: number
   name: string
@@ -22,9 +24,9 @@ export interface Movie {
   vote_count: number
 }
 
-export interface Category {
+export interface Category<T> {
   title: string
-  movies: Movie[]
+  movies: T
 }
 
 export interface VideoType {

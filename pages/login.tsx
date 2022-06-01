@@ -3,9 +3,8 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import useAuth from '../hooks/useAuth'
-import nookies from 'nookies'
 import { GetServerSidePropsContext } from 'next'
-import { firebaseAdmin } from '../firebaseAdmin'
+import { checkUser } from '../utils/api/authApi'
 
 interface Inputs {
   email: string
@@ -110,8 +109,7 @@ const login = () => {
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
-    const cookies = nookies.get(ctx)
-    await firebaseAdmin.auth().verifyIdToken(cookies.token)
+    await checkUser(ctx)
     return {
       redirect: {
         destination: '/',
@@ -121,6 +119,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   } catch (err) {
     console.log(err)
   }
+
   return {
     props: {},
   }
