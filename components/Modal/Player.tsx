@@ -66,10 +66,9 @@ const Player = () => {
         await addToMyList(user!, currentMovie!)
         setIsAddedToMyList(true)
         toast(
-          `${
-            currentMovie?.title ||
-            currentMovie?.name ||
-            currentMovie?.original_name
+          `${currentMovie?.title ||
+          currentMovie?.name ||
+          currentMovie?.original_name
           } has been added to My List`,
           {
             style: toastStyle,
@@ -80,10 +79,9 @@ const Player = () => {
         await removeFromMyList(user!, currentMovie!.id)
         setIsAddedToMyList(false)
         toast(
-          `${
-            currentMovie?.title ||
-            currentMovie?.name ||
-            currentMovie?.original_name
+          `${currentMovie?.title ||
+          currentMovie?.name ||
+          currentMovie?.original_name
           } has been removed from My List`,
           {
             style: toastStyle,
@@ -137,11 +135,12 @@ const Player = () => {
         <button
           className="modalBtn"
           onClick={() => setMuted((prevState) => !prevState)}
+          data-testid="volume"
         >
           {muted ? (
-            <VolumeOffIcon className="h-6 w-6" />
+            <VolumeOffIcon className="h-6 w-6" data-testid="muted" />
           ) : (
-            <VolumeUpIcon className="h-6 w-6" />
+            <VolumeUpIcon className="h-6 w-6" data-testid="unmuted" />
           )}
         </button>
       </div>

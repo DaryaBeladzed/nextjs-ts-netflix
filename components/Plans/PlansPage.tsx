@@ -49,7 +49,7 @@ const PlansPage = () => {
             }}
           >
             {isBillingLoading ? (
-              <Loader color="dark:fill-gray-300" />
+              <Loader color="fill-gray-300" />
             ) : (
               'Subscribe'
             )}
